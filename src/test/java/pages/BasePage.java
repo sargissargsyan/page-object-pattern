@@ -2,15 +2,15 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 
-import static pages.DriverHelper.getDriver;
+import static helpers.DriverHelper.getDriver;
 import static tests.BaseTest.getWebServer;
 
 /**
  * Created by sargis.sargsyan on 9/14/16
  */
-public abstract class BasePage<T> {
+public abstract class BasePage <T extends LoadableComponent<T>> extends LoadableComponent<T>{
 
     protected WebDriver driver;
     protected WebDriverWait wait;

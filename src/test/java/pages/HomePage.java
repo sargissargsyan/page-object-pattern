@@ -1,5 +1,6 @@
 package pages;
 
+import helpers.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -12,6 +13,10 @@ public class HomePage extends BasePage {
 
     By menuBarLocator = By.cssSelector("div#hmenus");
     By questionsTabLocator = By.cssSelector("#nav-questions");
+
+    public HomePage() {
+        this.get();
+    }
 
     public QuestionsPage clickQuestionsTab() {
         WebElement questionsTab = driver.findElement(questionsTabLocator);
@@ -27,5 +32,16 @@ public class HomePage extends BasePage {
     @Override
     public String getPageUrl() {
         return "/questions";
+    }
+
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        WaitHelper.isLoaded().isElementIsVisible(questionsTabLocator);
+        WaitHelper.isLoaded().isElementIsClickable(questionsTabLocator);
     }
 }
